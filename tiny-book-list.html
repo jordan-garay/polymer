@@ -1,0 +1,44 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link rel="import" href="bower_components/mercury-paginator/mercury-paginator.html">
+<link rel="import" href="tiny-book-card.html">
+
+<dom-module id="tiny-book-list">
+    <template is="dom-bind">
+        <style include="iron-flex iron-flex-layout"></style>
+        <style>
+            :host {
+                width: 100%;
+
+            }
+
+            div.book -list - content {
+                position : relative ;
+                width: 100%;
+                justify-content : space-around;
+            }
+        </style>
+        <div class="book-list-content flex layout horizontal wrap around-justified">
+            <template is="dom-repeat" items="{{books}}">
+                <tiny-book-card item="{{item}}"></tiny-book-card>
+            </template>
+    <section>
+        <accountability-ticket></accountability-ticket>
+    </section>
+    </div>
+    </template>
+    <script>
+        Polymer({
+            is: "tiny-book-list",
+            properties: {
+                elements: {
+                    type: Array,
+                    notify: true,
+                }
+            }
+        });
+    </script>
+</dom-module>

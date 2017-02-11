@@ -1,0 +1,73 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="tiny-form.html">
+
+<dom-module id="tiny-book-card">
+    <template>
+        <style include="iron-flex iron-flex-layout"></style>
+        <style>
+            :host {
+                width: 32%;
+                position: relative;
+                display: block;
+            }
+            paper-card.book-card {
+                margin:3px;
+                height: 120px;
+                box-sizing: border-box;
+            }
+            div.book-card-cover {
+                width: 120px;
+                min-width: 120px;
+                display: inline-block;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-color: #dde;
+                background-position-x: center;
+            }
+            div.book-card-info {
+                height: 100%;
+                display: inline-block;
+                padding-right: 10px;
+                text-align: right;
+            }
+            div.book-card-info-title {
+                font-weight: bold;
+            }
+            @media (min-width: 300px) {
+                paper-card.book-card { width: 98%; }
+            }
+            @media (min-width: 700px) {
+                paper-card.book-card { width: 99.5%; }
+            }
+            @media (min-width: 1024px) {
+                paper-card.book-card { width: 100%; }
+            }
+        </style>
+        <paper-card class="book-card layout horizontal">
+            <div class="book-card-cover" style="background-image: url(data:image/jpeg;base64,{{item.img.data}})"></div>
+            <div class="book-card-info flex vertical" id="{{item._id}}">
+                <div class="book-card-info-title">{{item.title}}</div>
+                <div class="book-card-info-author">{{item.author}}</div>
+                <div class="book-card-info-price">{{item.price}}&euro;</div>
+                <button on-tap="update">Modifier</button>
+                <button onclick="document.getElementsByTagName('tiny-pouchdb')[0]._delete_book(this.value)" value="{{item._id}}">Remove</button>
+
+            </div>
+        </paper-card>
+    </template>
+    <script>
+        Polymer({
+            is: "tiny-book-card",
+            properties: {
+                elements: {
+                        type: Array,
+                        notify: true,
+                }
+            }
+        });
+    </script>
+</dom-module>

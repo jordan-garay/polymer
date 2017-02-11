@@ -1,0 +1,27 @@
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+
+<dom-module id="tiny-form">
+    <template>
+        <!--<paper-button on-click="validerClick">Valider</paper-button>-->
+    </template>
+    <script>
+        Polymer({
+            is: "tiny-form",
+            confirmClick: function(event) {
+                console.log(event);
+            }
+        });
+
+        window.addEventListener('WebComponentsReady', function(e) {
+            // imports are loaded and elements have been registered
+            document.querySelector("#modif").addEventListener("click", clickHandler);
+        });
+
+        function clickHandler(e) {
+            console.log("click handler");
+            console.log(e.id);
+            console.log(pouchdb.books);
+            //$(books.find(":id="+e.id))
+        };
+    </script>
+</dom-module>
